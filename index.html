@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>TubeRize Affiliate Page</title>
+    <meta
+      name="description"
+      content="Level up your YouTube channel with TubeBuddy. Research keywords, optimize videos, and grow from 0–50k subscribers faster with proven tools."
+    />
+    <meta name="theme-color" content="#FF6B6B" />
+    <link rel="icon" href="logo.png" type="image/png" sizes="32x32" />
+    <link rel="apple-touch-icon" href="logo.png" />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="TubeRize Affiliate Page" />
+    <meta
+      property="og:description"
+      content="Level up your YouTube channel with TubeBuddy. Research keywords, optimize videos, and grow from 0–50k subscribers faster with proven tools."
+    />
+    <meta property="og:image" content="https://images.unsplash.com/photo-1516280440614-37939bbacd81?w=1200&q=80&auto=format&fit=crop" />
+    <meta property="og:url" content="https://example.com/tubebuddy-affiliate" />
+
+    <!-- Tailwind CSS (CDN acceptable) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              accent: '#FF6B6B',
+            },
+            boxShadow: {
+              soft: '0 8px 30px rgba(0,0,0,0.08)',
+            },
+          },
+        },
+      };
+    </script>
+
+    <!-- FAQ JSON-LD -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "What is TubeBuddy?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "TubeBuddy is a browser extension and suite of tools that helps creators research keywords, optimize videos, and manage channels to grow faster."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Is TubeBuddy worth it for small channels?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes. Features like keyword explorer, SEO studio, and thumbnail A/B testing help small channels find opportunities and improve performance with data-driven decisions."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Do I need to install anything?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "TubeBuddy works as a browser extension and web app. Installation is quick, and you can start using the free plan immediately."
+            }
+          }
+        ]
+      }
+    </script>
+
+    <style>
+      .accordion-content {
+        transition: grid-template-rows 200ms ease, padding 200ms ease;
+      }
+    </style>
+  </head>
+  <body class="antialiased text-slate-800">
+    <!-- Config variables -->
+    <script>
+      // TODO: Replace AFFILIATE_URL with your TubeBuddy affiliate signup URL
+      const AFFILIATE_URL = "https://www.tubebuddy.com/pricing?a=YounessProd";
+      const AFFILIATE_ID = ""; // not needed when full affiliate URL already includes id
+      const UTM_PARAM = "utm_source=affiliate";
+
+      function buildAffiliateUrl(base = AFFILIATE_URL, extraParams = "") {
+        const url = new URL(base);
+        const hasQuery = url.search && url.search.length > 1;
+        const joiner = hasQuery ? "&" : "?";
+        const utmPart = UTM_PARAM + (AFFILIATE_ID ? `&aff_id=${encodeURIComponent(AFFILIATE_ID)}` : "");
+        const tail = [utmPart, extraParams].filter(Boolean).join("&");
+        return base + joiner + tail;
+      }
+    </script>
+
+    <!-- Header -->
+    <header class="sticky top-0 z-40 bg-white/80 backdrop-blur border-b border-slate-100">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex items-center justify-between h-20">
+          <a href="#top" class="flex items-center gap-2 font-semibold text-slate-900">
+            <img src="logo.png" alt="TubeBuddy Boost logo" class="block h-16 w-auto rounded-lg shadow-soft object-cover shrink-0" />
+            
+          </a>
+          <nav class="hidden md:flex items-center gap-8 text-sm">
+            <a href="#features" class="hover:text-accent">Features</a>
+            <a href="#how" class="hover:text-accent">How it works</a>
+            <a href="#testimonials" class="hover:text-accent">Love</a>
+            <a href="#pricing" class="hover:text-accent">Pricing</a>
+            <a href="#faq" class="hover:text-accent">FAQ</a>
+          </nav>
+          <div class="hidden md:flex items-center gap-3">
+            <a id="nav-cta" href="#" class="px-4 py-2 rounded-full bg-accent text-white shadow-soft hover:opacity-90 transition">
+              Start Free
+            </a>
+          </div>
+          <button id="mobile-menu-btn" aria-label="Open Menu" class="md:hidden inline-flex h-10 w-10 items-center justify-center rounded-lg border border-slate-200">
+            <span class="sr-only">Toggle menu</span>
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+            </svg>
+          </button>
+        </div>
+      </div>
+      <div id="mobile-menu" class="md:hidden hidden border-t border-slate-100 bg-white">
+        <div class="px-4 py-4 space-y-2 text-sm">
+          <a href="#features" class="block py-2">Features</a>
+          <a href="#how" class="block py-2">How it works</a>
+          <a href="#testimonials" class="block py-2">Love</a>
+          <a href="#pricing" class="block py-2">Pricing</a>
+          <a href="#faq" class="block py-2">FAQ</a>
+          <a id="mobile-cta" href="#" class="block py-2 text-accent font-semibold">Start Free</a>
+        </div>
+      </div>
+    </header>
+
+    <!-- Hero -->
+    <section id="top" class="relative overflow-hidden">
+      <div class="absolute inset-0 pointer-events-none" aria-hidden="true">
+        <div class="absolute -top-24 -right-24 h-64 w-64 rounded-full bg-accent/10 blur-3xl"></div>
+      </div>
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-24">
+        <div class="grid lg:grid-cols-2 gap-12 items-center">
+          <div>
+            <h1 class="text-4xl sm:text-5xl font-extrabold tracking-tight text-slate-900">
+              Grow your YouTube channel from 0–50k faster
+            </h1>
+            <p class="mt-4 text-lg text-slate-600">
+              TubeBuddy gives you research, SEO, and workflow tools so every upload works harder. Spend less time guessing and more time creating.
+            </p>
+            <div class="mt-8 flex flex-col sm:flex-row gap-3">
+              <a id="hero-primary-cta" href="#" class="inline-flex items-center justify-center px-6 py-3 rounded-full bg-accent text-white font-semibold shadow-soft hover:opacity-90 transition">
+                Start Free
+              </a>
+              <a id="hero-secondary-cta" href="#features" class="inline-flex items-center justify-center px-6 py-3 rounded-full border border-slate-300 text-slate-700 bg-white hover:bg-slate-50">
+                See Features
+              </a>
+            </div>
+            <div class="mt-6 flex items-center gap-6 text-xs text-slate-500">
+              <div class="flex items-center gap-2">
+                <span class="inline-block h-2 w-2 rounded-full bg-emerald-500"></span>
+                Trusted by 10,000+ creators
+              </div>
+              <div class="flex items-center gap-2">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-amber-500" viewBox="0 0 20 20" fill="currentColor">
+                  <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.801 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118L10 13.347l-2.887 2.134c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L3.48 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                </svg>
+                4.8/5 average rating
+              </div>
+            </div>
+          </div>
+          <div class="relative">
+            <!-- TODO: Replace src with your preferred hero image URL -->
+            <img
+              src="https://images.unsplash.com/photo-1518779578993-ec3579fee39f?w=1600&q=80&auto=format&fit=crop"
+              alt="Creator workspace with camera, mic, and laptop"
+              class="rounded-2xl shadow-soft w-full"
+            />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Intro Video -->
+    <section class="py-8 sm:py-12">
+      <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <h2 class="text-3xl sm:text-4xl font-bold tracking-tight text-slate-900">
+          See how TubeBuddy grows small channels faster
+        </h2>
+        <p class="mt-3 text-slate-600">
+          A quick walkthrough of the tools creators use to research topics, optimize uploads, and
+          grow consistently without guesswork.
+        </p>
+      </div>
+      <div class="mt-8 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div style="position:relative;padding-top:56.25%;">
+          <video
+            src="./tubebuddy-promotional-video-script.mp4"
+            controls
+            playsinline
+            preload="metadata"
+            style="position:absolute;top:0;left:0;width:100%;height:100%;border:0;"
+          ></video>
+        </div>
+        <p class="mt-6 max-w-3xl mx-auto text-center text-slate-600">
+          If you’re a small or growing YouTuber, TubeBuddy helps you work smarter. Find
+          low‑competition keywords, A/B test thumbnails, and follow SEO checklists so every upload
+          performs better.
+        </p>
+      </div>
+    </section>
+
+    <!-- Features -->
+    <section id="features" class="py-16 sm:py-24 bg-slate-50">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center max-w-2xl mx-auto">
+          <h2 class="text-3xl font-bold text-slate-900">Everything you need to grow</h2>
+          <p class="mt-3 text-slate-600">Actionable tools that turn small channels into smart channels.</p>
+        </div>
+        <div class="mt-12 grid md:grid-cols-3 gap-6">
+          <div class="bg-white rounded-2xl p-6 shadow-soft">
+            <div class="h-12 w-12 rounded-xl bg-accent/10 text-accent flex items-center justify-center">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M10 2a8 8 0 105.293 14.293l4.207 4.207a1 1 0 001.414-1.414l-4.207-4.207A8 8 0 0010 2zm0 2a6 6 0 110 12A6 6 0 0110 4z"/>
+              </svg>
+            </div>
+            <h3 class="mt-4 font-semibold text-lg">Keyword Explorer</h3>
+            <p class="mt-2 text-slate-600">Find low-competition keywords and tags your audience is already searching for.</p>
+          </div>
+          <div class="bg-white rounded-2xl p-6 shadow-soft">
+            <div class="h-12 w-12 rounded-xl bg-accent/10 text-accent flex items-center justify-center">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M14 4l-2 2-1 3-3 1-2 2 4 4 2-2 1-3 3-1 2-2-4-4zM6 18l2 2 2-2-2-2-2 2z"/>
+              </svg>
+            </div>
+            <h3 class="mt-4 font-semibold text-lg">SEO Studio</h3>
+            <p class="mt-2 text-slate-600">Step-by-step guidance to optimize titles, descriptions, and tags for discoverability.</p>
+          </div>
+          <div class="bg-white rounded-2xl p-6 shadow-soft">
+            <div class="h-12 w-12 rounded-xl bg-accent/10 text-accent flex items-center justify-center">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M3 3h2v18H3V3zm4 10h2v8H7v-8zm4-6h2v14h-2V7zm4 4h2v10h-2V11zm4-8h2v18h-2V3z"/>
+              </svg>
+            </div>
+            <h3 class="mt-4 font-semibold text-lg">A/B Testing</h3>
+            <p class="mt-2 text-slate-600">Compare thumbnails and titles to see what actually gets more clicks.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- How it Works -->
+    <section id="how" class="py-16 sm:py-24">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center max-w-2xl mx-auto">
+          <h2 class="text-3xl font-bold text-slate-900">How it works</h2>
+          <p class="mt-3 text-slate-600">Three simple steps to smarter uploads and steady growth.</p>
+        </div>
+        <div class="mt-12 grid md:grid-cols-3 gap-6">
+          <div class="bg-white rounded-2xl p-6 shadow-soft">
+            <div class="flex items-center gap-3">
+              <span class="h-8 w-8 rounded-full bg-accent text-white inline-flex items-center justify-center font-semibold">1</span>
+              <h3 class="font-semibold text-lg">Install & connect</h3>
+            </div>
+            <p class="mt-3 text-slate-600">Add the browser extension and connect your channel in minutes. The free plan works right away.</p>
+          </div>
+          <div class="bg-white rounded-2xl p-6 shadow-soft">
+            <div class="flex items-center gap-3">
+              <span class="h-8 w-8 rounded-full bg-accent text-white inline-flex items-center justify-center font-semibold">2</span>
+              <h3 class="font-semibold text-lg">Research & optimize</h3>
+            </div>
+            <p class="mt-3 text-slate-600">Find topics with Keyword Explorer, nail your titles, and follow SEO Studio’s checklist.</p>
+          </div>
+          <div class="bg-white rounded-2xl p-6 shadow-soft">
+            <div class="flex items-center gap-3">
+              <span class="h-8 w-8 rounded-full bg-accent text-white inline-flex items-center justify-center font-semibold">3</span>
+              <h3 class="font-semibold text-lg">Test & grow</h3>
+            </div>
+            <p class="mt-3 text-slate-600">Run A/B tests on thumbnails and titles, then repeat what works to grow consistently.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section id="testimonials" class="py-16 sm:py-24 bg-slate-50">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center max-w-2xl mx-auto">
+          <h2 class="text-3xl font-bold text-slate-900">Creators love the results</h2>
+          <p class="mt-3 text-slate-600">Real stories from channels that started small.</p>
+        </div>
+        <div class="mt-12 grid md:grid-cols-3 gap-6">
+          <div class="bg-white rounded-2xl p-6 shadow-soft">
+            <div class="flex items-center gap-3">
+              <img src="download.jpeg" alt="Jenna avatar" class="h-10 w-10 rounded-full object-cover" />
+              <div>
+                <div class="font-semibold">Jenna • 8k subs</div>
+                <div class="text-xs text-slate-500">Lifestyle</div>
+              </div>
+            </div>
+            <p class="mt-4 text-slate-700">“Keyword Explorer showed me topics I could actually rank for. I hit 1,000 subs in half the time.”</p>
+          </div>
+          <div class="bg-white rounded-2xl p-6 shadow-soft">
+            <div class="flex items-center gap-3">
+              <img src="download%20(2).jpeg" alt="Marco avatar" class="h-10 w-10 rounded-full object-cover" />
+              <div>
+                <div class="font-semibold">Marco • 22k subs</div>
+                <div class="text-xs text-slate-500">Tech</div>
+              </div>
+            </div>
+            <p class="mt-4 text-slate-700">“A/B testing thumbnails was a game changer. CTR jumped 24% across my last series.”</p>
+          </div>
+          <div class="bg-white rounded-2xl p-6 shadow-soft">
+            <div class="flex items-center gap-3">
+              <img src="download%20(1).jpeg" alt="Priya avatar" class="h-10 w-10 rounded-full object-cover" />
+              <div>
+                <div class="font-semibold">Priya • 41k subs</div>
+                <div class="text-xs text-slate-500">Education</div>
+              </div>
+            </div>
+            <p class="mt-4 text-slate-700">“SEO Studio keeps me consistent. Views from search are now my #1 traffic source.”</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Pricing -->
+    <section id="pricing" class="py-16 sm:py-24">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center max-w-3xl mx-auto">
+          <h2 class="text-3xl font-bold text-slate-900">Pick your plan</h2>
+          <p class="mt-3 text-slate-600">Start free. Upgrade to unlock growth features when you’re ready.</p>
+        </div>
+        <div class="mt-12 grid md:grid-cols-2 gap-6">
+          <div class="bg-white rounded-2xl p-6 shadow-soft border border-slate-100">
+            <div class="flex items-baseline justify-between">
+              <h3 class="text-xl font-semibold">Free</h3>
+              <div class="text-3xl font-extrabold">$0</div>
+            </div>
+            <p class="mt-2 text-slate-600">Core tools to get started.</p>
+            <ul class="mt-6 space-y-3 text-sm text-slate-700">
+              <li class="flex items-start gap-2"><span class="text-emerald-600">✓</span> Basic keyword research</li>
+              <li class="flex items-start gap-2"><span class="text-emerald-600">✓</span> Tag suggestions</li>
+              <li class="flex items-start gap-2"><span class="text-emerald-600">✓</span> Upload checklists</li>
+            </ul>
+            <a id="pricing-free-cta" href="#" class="mt-6 inline-flex w-full items-center justify-center px-5 py-3 rounded-xl border border-slate-300 bg-white hover:bg-slate-50">
+              Get Started Free
+            </a>
+          </div>
+          <div class="bg-white rounded-2xl p-6 shadow-soft border-2 border-accent relative">
+            <div class="absolute -top-3 left-1/2 -translate-x-1/2 bg-accent text-white px-3 py-1 rounded-full text-xs font-semibold shadow-soft">Recommended</div>
+            <div class="flex items-baseline justify-between">
+              <h3 class="text-xl font-semibold">Pro</h3>
+              <div class="text-3xl font-extrabold">Best Value</div>
+            </div>
+            <p class="mt-2 text-slate-600">Unlock growth with advanced tools.</p>
+            <ul class="mt-6 space-y-3 text-sm text-slate-700">
+              <li class="flex items-start gap-2"><span class="text-emerald-600">✓</span> Full Keyword Explorer</li>
+              <li class="flex items-start gap-2"><span class="text-emerald-600">✓</span> SEO Studio guidance</li>
+              <li class="flex items-start gap-2"><span class="text-emerald-600">✓</span> Thumbnail/title A/B testing</li>
+              <li class="flex items-start gap-2"><span class="text-emerald-600">✓</span> Competitor analysis</li>
+              <li class="flex items-start gap-2"><span class="text-emerald-600">✓</span> Bulk processing tools</li>
+            </ul>
+            <a id="pricing-pro-cta" href="#" class="mt-6 inline-flex w-full items-center justify-center px-5 py-3 rounded-xl bg-accent text-white font-semibold shadow-soft hover:opacity-90">
+              Upgrade to Pro
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section id="faq" class="py-16 sm:py-24 bg-slate-50">
+      <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center max-w-2xl mx-auto">
+          <h2 class="text-3xl font-bold text-slate-900">Frequently asked questions</h2>
+          <p class="mt-3 text-slate-600">If you can’t find an answer, email us and we’ll help.</p>
+        </div>
+        <div class="mt-10 space-y-4">
+          <div class="bg-white rounded-2xl shadow-soft border border-slate-100">
+            <button type="button" class="w-full px-5 py-4 flex items-center justify-between gap-4 text-left faq-toggle">
+              <span class="font-semibold">What is TubeBuddy?</span>
+              <svg class="h-5 w-5 text-slate-500 transition-transform" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+              </svg>
+            </button>
+            <div class="accordion-content grid grid-rows-[0fr] px-5 pb-0">
+              <div class="overflow-hidden">
+                <p class="pb-5 text-slate-600">TubeBuddy is a browser extension and suite of tools that helps creators research keywords, optimize videos, and manage channels to grow faster.</p>
+              </div>
+            </div>
+          </div>
+          <div class="bg-white rounded-2xl shadow-soft border border-slate-100">
+            <button type="button" class="w-full px-5 py-4 flex items-center justify-between gap-4 text-left faq-toggle">
+              <span class="font-semibold">Is TubeBuddy worth it for small channels?</span>
+              <svg class="h-5 w-5 text-slate-500 transition-transform" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+              </svg>
+            </button>
+            <div class="accordion-content grid grid-rows-[0fr] px-5 pb-0">
+              <div class="overflow-hidden">
+                <p class="pb-5 text-slate-600">Yes. Features like keyword explorer, SEO studio, and thumbnail A/B testing help small channels find opportunities and improve performance with data-driven decisions.</p>
+              </div>
+            </div>
+          </div>
+          <div class="bg-white rounded-2xl shadow-soft border border-slate-100">
+            <button type="button" class="w-full px-5 py-4 flex items-center justify-between gap-4 text-left faq-toggle">
+              <span class="font-semibold">Do I need to install anything?</span>
+              <svg class="h-5 w-5 text-slate-500 transition-transform" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+              </svg>
+            </button>
+            <div class="accordion-content grid grid-rows-[0fr] px-5 pb-0">
+              <div class="overflow-hidden">
+                <p class="pb-5 text-slate-600">TubeBuddy works as a browser extension and web app. Installation is quick, and you can start using the free plan immediately.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Email Capture + Disclosure -->
+    <section class="py-16">
+      <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="bg-white rounded-2xl p-6 shadow-soft border border-slate-100">
+          <h3 class="text-xl font-semibold">Get started free — we’ll send tips that work</h3>
+          <p class="mt-2 text-slate-600">Enter your email and go straight to TubeBuddy. We’ll append our affiliate tag to support the site.</p>
+          <form id="email-form" class="mt-6 grid sm:grid-cols-[1fr_auto] gap-3">
+            <label for="email" class="sr-only">Email</label>
+            <input id="email" name="email" type="email" required placeholder="your@email.com" class="w-full rounded-xl border border-slate-300 px-4 py-3 focus:outline-none focus:ring-2 focus:ring-accent" />
+            <button type="submit" class="inline-flex items-center justify-center px-6 py-3 rounded-xl bg-accent text-white font-semibold shadow-soft hover:opacity-90">Continue</button>
+          </form>
+          <p class="mt-4 text-xs text-slate-500">
+            Affiliate disclosure: Some links on this page are affiliate links. If you sign up, we may earn a commission at no additional cost to you. We only recommend tools we use and love.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-10 border-t border-slate-100 text-sm text-slate-500">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4">
+        <div>© <span id="year"></span> TubeBuddy Boost. Not affiliated with YouTube.</div>
+        <div class="flex items-center gap-6">
+          <a href="#features" class="hover:text-accent">Features</a>
+          <a href="#pricing" class="hover:text-accent">Pricing</a>
+          <a href="#faq" class="hover:text-accent">FAQ</a>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Minimal JS -->
+    <script>
+      document.getElementById("year").textContent = new Date().getFullYear();
+
+      function setAffiliateHrefs() {
+        const affiliateLink = buildAffiliateUrl();
+        const ids = ["nav-cta", "mobile-cta", "hero-primary-cta", "pricing-free-cta", "pricing-pro-cta"];
+        ids.forEach((id) => {
+          const el = document.getElementById(id);
+          if (el) {
+            el.href = affiliateLink;
+            el.setAttribute("target", "_blank");
+            el.setAttribute("rel", "noopener noreferrer");
+          }
+        });
+      }
+      setAffiliateHrefs();
+
+      function trackCtaClick(label) {
+        console.log("[CTA]", label, { affiliate: buildAffiliateUrl() });
+      }
+      ["nav-cta", "mobile-cta", "hero-primary-cta", "pricing-free-cta", "pricing-pro-cta"].forEach((id) => {
+        const el = document.getElementById(id);
+        if (el) el.addEventListener("click", () => trackCtaClick(id));
+      });
+
+      const mobileBtn = document.getElementById("mobile-menu-btn");
+      const mobileMenu = document.getElementById("mobile-menu");
+      if (mobileBtn && mobileMenu) {
+        mobileBtn.addEventListener("click", () => {
+          mobileMenu.classList.toggle("hidden");
+        });
+      }
+
+      document.querySelectorAll(".faq-toggle").forEach((btn) => {
+        btn.addEventListener("click", () => {
+          const item = btn.parentElement;
+          const content = item.querySelector(".accordion-content");
+          const icon = btn.querySelector("svg");
+          const isOpen = content.style.gridTemplateRows === "1fr" || content.classList.contains("open");
+
+          if (isOpen) {
+            content.style.gridTemplateRows = "0fr";
+            content.style.paddingBottom = "0";
+            content.classList.remove("open");
+            if (icon) icon.style.transform = "rotate(0deg)";
+          } else {
+            content.style.gridTemplateRows = "1fr";
+            content.style.paddingBottom = "1.25rem";
+            content.classList.add("open");
+            if (icon) icon.style.transform = "rotate(180deg)";
+          }
+        });
+      });
+
+      const emailForm = document.getElementById("email-form");
+      if (emailForm) {
+        emailForm.addEventListener("submit", (e) => {
+          e.preventDefault();
+          const email = (document.getElementById("email").value || "").trim();
+          const params = new URLSearchParams();
+          params.set("email", email);
+          const redirectUrl = buildAffiliateUrl(AFFILIATE_URL, params.toString()); // appends ?utm_source=affiliate
+          console.log("[EmailSubmit] redirect", redirectUrl);
+          window.location.href = redirectUrl;
+        });
+      }
+    </script>
+  </body>
+  <!--
+    Notes:
+    - Replace AFFILIATE_URL with your TubeBuddy affiliate signup URL.
+    - Replace the hero image src with your preferred image URL.
+    - All copy is inline; no external files required.
+  -->
+</html>
